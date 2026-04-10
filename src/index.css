@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", sans-serif;
+
+  --color-glow-cyan: #00e5ff;
+  --color-glow-purple: #8a2be2;
+  --color-glow-green: #00ff88;
+  --color-bg-dark: #040814;
+  --color-bg-card: rgba(255, 255, 255, 0.06);
+  --color-border-muted: rgba(255, 255, 255, 0.10);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-[#e9f4ff] font-sans overflow-x-hidden;
+    background: radial-gradient(circle at top, #0c1030, theme('colors.bg-dark') 60%);
+  }
+}
+
+@layer utilities {
+  .glow-shadow-cyan {
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.2);
+  }
+  .glow-border-cyan {
+    border-color: rgba(0, 229, 255, 0.45);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 18px rgba(0, 229, 255, 0.35);
+  }
+}
+
+@keyframes bgPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.glow-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(0, 229, 255, 0.20), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(138, 43, 226, 0.18), transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(0, 255, 136, 0.14), transparent 50%);
+  filter: blur(10px);
+  animation: bgPulse 8s infinite alternate ease-in-out;
+}
+
+@keyframes spinGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card-glow-effect::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background: conic-gradient(from 180deg, rgba(0, 229, 255, 0.18), rgba(138, 43, 226, 0.15), rgba(0, 255, 136, 0.12), rgba(0, 229, 255, 0.18));
+  filter: blur(50px);
+  opacity: 0.6;
+  z-index: -1;
+  animation: spinGlow 12s linear infinite;
+}
+

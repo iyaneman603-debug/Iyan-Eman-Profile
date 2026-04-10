@@ -1,0 +1,5 @@
+{
+  "name": "Iyan Eman Profile 2026",
+  "description": "Identity profile system for ISSA AMAN JUMA (IYAN EMAN JUMA), featuring futuristic UI, live location tracking, and an interactive AI assistant.",
+  "requestFramePermissions": ["geolocation"]
+}
